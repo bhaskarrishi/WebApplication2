@@ -1,0 +1,76 @@
+﻿<h1>@ViewBag.ItemList</h1>
+<fieldset>
+    @using (Ajax.BeginForm("CalculateInventoryResult", "Home",
+                           new AjaxOptions { UpdateTargetId = "divInterestDeatils" }))
+    {
+        <div id="divInterestDeatils"></div>
+        <form>
+            @Html.DropDownList("txtName", new List<SelectListItem>
+            { new SelectListItem { Text = "Screws" , Value = "Screws" },
+              new SelectListItem { Text = "Bolts" , Value = "Bolts" },
+              new SelectListItem { Text = "Scissors" , Value = "Scissors" },
+              new SelectListItem { Text = "Hammer" , Value = "Hammer" },
+              new SelectListItem { Text = "Screw driver" , Value = "Screw driver" }
+            } , "Select Item" )
+            
+            @Html.Label("Quantity")
+            @Html.TextBox("txtQuantity")
+
+            @Html.Label("Price")
+            @Html.TextBox("txtPrice")
+
+            <button>Add</button> 
+            
+            <button>Submit</button>
+
+            <h1>
+                <b>Name:</b>
+                <b>Quantity:</b>
+                <b>Price:</b>
+                <b>Total:</b>
+
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                    </tr>
+                    <tr>
+                        <td>"Screws"</td>
+                        <td>@ViewBag.screwqty</td>
+                        <td>@ViewBag.screwprice</td>
+                        <td>@ViewBag.screwTotal</td>
+                    </tr>
+                    <tr>
+                        <td>"Bolts"</td>
+                        <td>@ViewBag.Boltsqty</td>
+                        <td>@ViewBag.Boltsprice</td>
+                        <td>@ViewBag.BoltsTotal</td>
+                    </tr>
+                    <tr>
+                        <td>@ViewBag.Scissors</td>
+                        <td>@ViewBag.Scissorsqty</td>
+                        <td>@ViewBag.Scissorsprice</td>
+                        <td>@ViewBag.ScissorsTotal</td>
+                    </tr>
+                    <tr>
+                        <td>@ViewBag.Hammer</td>
+                        <td>@ViewBag.Hammerqty</td>
+                        <td>@ViewBag.Hammerprice</td>
+                        <td>@ViewBag.HammerTotal</td>
+                    </tr>
+                    <tr>
+                        <td>@ViewBag.SD</td>
+                        <td>@ViewBag.SDqty</td>
+                        <td>@ViewBag.SDprice</td>
+                        <td>@ViewBag.SDTotal</td>
+                    </tr>
+                </table>
+
+
+            </h1>
+        </form>
+
+    }
+</fieldset>

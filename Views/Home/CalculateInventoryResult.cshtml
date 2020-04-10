@@ -1,0 +1,51 @@
+﻿@model CalculateInventory.Models.ProductModel
+
+<h1>@ViewBag.ItemList</h1>
+<fieldset>
+    @using (Ajax.BeginForm("CalculateInventoryResult", "Home",
+                           new AjaxOptions { UpdateTargetId = "divInterestDeatils" }))
+    {
+        <div id="divInterestDeatils"></div>
+        <form>
+            @Html.DropDownList("txtName", new List<SelectListItem>
+            { new SelectListItem { Text = "Screws" , Value = "Screws" },
+              new SelectListItem { Text = "Bolts" , Value = "Bolts" },
+              new SelectListItem { Text = "Scissors" , Value = "Scissors" },
+              new SelectListItem { Text = "Hammer" , Value = "Hammer" },
+              new SelectListItem { Text = "Screw driver" , Value = "Screw driver" }
+            }, "Select Item")
+
+            @Html.Label("Quantity")
+            @Html.TextBox("txtQuantity")
+
+            @Html.Label("Price")
+            @Html.TextBox("txtPrice")
+
+            <button>Add</button>
+            <button>Submit</button>
+
+            <br></br>
+            <font color="red">@ViewBag.errormsg1</font> &nbsp;&nbsp;&nbsp;  <font color="red">@ViewBag.errormsg2</font>
+
+            <h1>
+                <b>Name:       </b> &nbsp;&nbsp;&nbsp;
+                <b>Quantity:   </b> &nbsp;&nbsp;&nbsp;
+                <b>Price:      </b> &nbsp;&nbsp;&nbsp;
+                <b>Total:      </b>
+            </h1>
+
+
+            <h1>
+                @ViewBag.strName  @ViewBag.strQuantity  @ViewBag.strPrice  @ViewBag.TotQty
+                <br></br>
+                <b>SubTotal : </b> @ViewBag.Subtotal
+                <br></br>
+                <b>Tax : </b> @ViewBag.Tax
+                <br></br>
+                <b>Total : </b> @ViewBag.Total
+
+            </h1>
+        </form>
+
+    }
+</fieldset>

@@ -1,0 +1,30 @@
+﻿@model CalculateInventory.Models.ProductModel
+
+<h1>@ViewBag.ItemList</h1>
+<fieldset>
+    @using (Ajax.BeginForm("InventoryUpdate", "Home",
+                           new AjaxOptions { UpdateTargetId = "divInterestDeatils" }))
+    {
+        <div id="divInterestDeatils"></div>
+        <form>
+            @Html.Label("Name")
+            @Html.TextBox("txtName")
+
+            @Html.Label("Quantity")
+            @Html.TextBox("txtQuantity")
+
+            @Html.Label("Price")
+            @Html.TextBox("txtPrice")
+
+            <button>Add</button>
+
+            <h1>
+                <b>Name:</b>
+                <b>Quantity:</b>
+                <b>Price:</b>
+                <b>Total:</b>
+            </h1>
+        </form>
+
+    }
+</fieldset>
